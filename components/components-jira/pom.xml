@@ -10,6 +10,10 @@
         <relativePath>../../components-parent/pom.xml</relativePath>
     </parent>
 
+    <properties>
+        <talend_docker_registry>registry.datapwn.com</talend_docker_registry>
+    </properties>
+
     <name>Components - Jira</name>
     <groupId>org.talend.components</groupId>
     <artifactId>components-jira</artifactId>
@@ -263,10 +267,11 @@
                             <goal>start</goal>
                         </goals>
                         <configuration>
+                            <registry>${talend_docker_registry}</registry>
                             <skip>${really.skip.tests}</skip>
                             <images>
                                 <image>
-                                    <name>${env.TESTCONTAINERS_HUB_IMAGE_NAME_PREFIX}igonchar/atlassian-jira:7.1.7v2</name>
+                                    <name>igonchar/atlassian-jira:7.1.7v2</name>
                                     <run>
                                         <ports>
                                             <port>jira.port:8080</port>

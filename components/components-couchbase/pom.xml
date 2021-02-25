@@ -21,6 +21,7 @@
         <rx.version>1.3.8</rx.version>
         <opentracing-api.version>0.31.0</opentracing-api.version>
         <couchbase.docker.image.name>talend/components-integration-test-couchbase-server:5.1.1-20181005144600</couchbase.docker.image.name>
+        <talend_docker_registry>registry.datapwn.com</talend_docker_registry>
         <docker.host.address>localhost</docker.host.address>
     </properties>
 
@@ -305,10 +306,11 @@
                 <version>${docker-maven-plugin.version}</version>
                 <configuration>
                     <skip>${really.skip.tests}</skip>
+                    <registry>${talend_docker_registry}</registry>
                     <images>
                         <image>
                             <alias>couchbase</alias>
-                            <name>${env.TESTCONTAINERS_HUB_IMAGE_NAME_PREFIX}${couchbase.docker.image.name}</name>
+                            <name>${couchbase.docker.image.name}</name>
                             <run>
                                 <ports>
                                     <port>8091:8091</port>
