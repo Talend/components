@@ -130,7 +130,7 @@
                             <skip>${really.skip.tests}</skip>
                             <images>
                                 <image>
-                                    <name>localstack/localstack</name>
+                                    <name>${env.TESTCONTAINERS_HUB_IMAGE_NAME_PREFIX}localstack/localstack</name>
                                     <run>
                                         <ports>
                                             <port>kinesis.port:4568</port>

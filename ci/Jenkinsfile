@@ -13,6 +13,11 @@ def dockerCredentials = usernamePassword(
     passwordVariable: 'DOCKER_PASSWORD',
     usernameVariable: 'DOCKER_LOGIN')
 
+def artifactoryCredentials = usernamePassword(
+    credentialsId: 'artifactory-datapwn-credentials',
+    passwordVariable: 'ARTIFACTORY_PASSWORD',
+    usernameVariable: 'ARTIFACTORY_LOGIN')
+
 def branch = env.BRANCH_NAME
 def repo = 'components'
 def slackChannel = 'components-ci'
@@ -54,6 +59,11 @@ spec:
         }
     }
 
+  environment {
+    ARTIFACTORY_REGISTRY = "artifactory.datapwn.com"
+    TESTCONTAINERS_HUB_IMAGE_NAME_PREFIX="artifactory.datapwn.com/docker-io-remote/"
+  }
+
   options {
     timeout(time: 120, unit: 'MINUTES')
     skipStagesAfterUnstable()
@@ -62,20 +72,36 @@ spec:
   }
 
   stages {
+    stage('Docker login') {
+      steps {
+        container('main') {
+           withCredentials([artifactoryCredentials]) {
+             sh '''#!/bin/bash
+             docker version
+             echo $ARTIFACTORY_PASSWORD | docker login $ARTIFACTORY_REGISTRY -u $ARTIFACTORY_LOGIN --password-stdin
+             '''
+           }
+        }
+      }
+    }
 
     stage('Compile') {
       steps {
-          container('main') {
-             sh 'mvn clean compile'
+        container('main') {
+          withCredentials([artifactoryCredentials]) {
+            sh 'mvn clean compile'
           }
+        }
       }
     }
 
     stage('Test') {
       steps {
-          container('main') {
-             sh 'mvn test'
+        container('main') {
+          withCredentials([artifactoryCredentials]) {
+            sh 'mvn test'
           }
+        }
       }
     }
 

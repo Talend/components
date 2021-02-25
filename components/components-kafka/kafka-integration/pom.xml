@@ -86,7 +86,7 @@
                             <skip>${really.skip.tests}</skip>
                             <images>
                                 <image>
-                                    <name>wurstmeister/zookeeper</name>
+                                    <name>${env.TESTCONTAINERS_HUB_IMAGE_NAME_PREFIX}wurstmeister/zookeeper</name>
                                     <alias>zookeeper</alias>
                                     <run>
                                         <ports>
@@ -98,7 +98,7 @@
                                     </run>
                                 </image>
                                 <image>
-                                    <name>wurstmeister/kafka:0.10.1.0</name>
+                                    <name>${env.TESTCONTAINERS_HUB_IMAGE_NAME_PREFIX}wurstmeister/kafka:0.10.1.0</name>
                                     <run>
                                         <env>
                                             <HOSTNAME_COMMAND>hostname -i</HOSTNAME_COMMAND>

@@ -183,7 +183,7 @@
                             <skip>${really.skip.tests}</skip>
                             <images>
                                 <image>
-                                    <name>dchmyga/splunk</name>
+                                    <name>${env.TESTCONTAINERS_HUB_IMAGE_NAME_PREFIX}dchmyga/splunk</name>
                                     <run>
                                         <env>
                                             <SPLUNK_START_ARGS>--accept-license</SPLUNK_START_ARGS>
