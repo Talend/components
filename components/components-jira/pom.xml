@@ -11,7 +11,7 @@
     </parent>
 
     <properties>
-        <talend_docker_registry>registry.datapwn.com</talend_docker_registry>
+        <talend_docker_registry>artifactory.datapwn.com</talend_docker_registry>
     </properties>
 
     <name>Components - Jira</name>
@@ -271,7 +271,7 @@
                             <skip>${really.skip.tests}</skip>
                             <images>
                                 <image>
-                                    <name>igonchar/atlassian-jira:7.1.7v2</name>
+                                    <name>talend/common/components/atlassian-jira:7.1.7v2</name>
                                     <run>
                                         <ports>
                                             <port>jira.port:8080</port>
