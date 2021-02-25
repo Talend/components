@@ -72,52 +72,19 @@ spec:
   }
 
   stages {
-    stage('Docker login') {
+    stage('Build') {
       steps {
         container('main') {
            withCredentials([artifactoryCredentials]) {
              sh '''#!/bin/bash
              docker version
              echo $ARTIFACTORY_PASSWORD | docker login $ARTIFACTORY_REGISTRY -u $ARTIFACTORY_LOGIN --password-stdin
+             mvn clean install
              '''
            }
         }
       }
     }
-
-    stage('Compile') {
-      steps {
-        container('main') {
-          withCredentials([artifactoryCredentials]) {
-            sh 'mvn clean compile'
-          }
-        }
-      }
-    }
-
-    stage('Test') {
-      steps {
-        container('main') {
-          withCredentials([artifactoryCredentials]) {
-            sh 'mvn test'
-          }
-        }
-      }
-    }
-
-    //stage('Deploy') {
-     // steps {
-    //    sh """
-     //       mvn -B -U -V 
-     //      """
-              // deploy
-              // -Dgit_branch="${escaped_branch}" \
-              // -Dbigquery.project="${bigquery_project}" \
-              // -Dbigquery.service.account.file="${service_account_file}" \
-              // -Dbigquery.gcp.temp.folder="${bigquery_gcp_temp_folder}" \
-              // -Dorg.talend.components.google.drive.service_account_file="${google_drive_service_account_file}" 
-   //   }
-   // }
   }
 
   post {
