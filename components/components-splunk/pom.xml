@@ -170,7 +170,7 @@
             <plugin>
                 <groupId>io.fabric8</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>${docker-maven-plugin.version}</version>
+                <version>0.26.0</version>
 
                 <executions>
                     <execution>
@@ -193,6 +193,11 @@
                                             <port>splunk.ec.port:8088</port>
                                         </ports>
                                         <wait>
+                                            <http>
+                                                <url>
+                                                    http://${docker.host.address}:${splunk.webui.port}/en-US/account/login?return_to=%2Fen-US%2F
+                                                </url>
+                                            </http>
                                             <time>60000</time>
                                         </wait>
                                     </run>
