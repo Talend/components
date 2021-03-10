@@ -158,7 +158,7 @@
         <netty-all.version>4.1.48.Final</netty-all.version>
         <netty-buffer.version>4.1.48.Final</netty-buffer.version>
         <netty-codec-http.version>4.1.48.Final</netty-codec-http.version>
-        <netty-codec-http2.version>4.1.48.Final</netty-codec-http2.version>
+        <netty-codec-http2.version>4.1.60.Final</netty-codec-http2.version>
         <netty-codec-socks.version>4.1.48.Final</netty-codec-socks.version>
         <netty-codec.version>4.1.48.Final</netty-codec.version>
         <netty-common.version>4.1.48.Final</netty-common.version>
