@@ -113,11 +113,9 @@
         <httpcore.version>4.4.13</httpcore.version>
         <httpasyncclient.version>4.1.2</httpasyncclient.version>
         <httpcore-nio.version>4.4.5</httpcore-nio.version>
-        <jackson-core-asl.version>1.9.14-TALEND</jackson-core-asl.version>
         <jackson-jaxrs.version>1.9.13</jackson-jaxrs.version>
-        <jackson-mapper-asl.version>1.9.14-TALEND</jackson-mapper-asl.version>
         <jackson-xc.version>1.9.13</jackson-xc.version>
-        <jackson.1x.version>1.9.14-TALEND</jackson.1x.version>
+        <jackson.1x.version>1.9.15-TALEND</jackson.1x.version>
         <jackson.version.annotations>2.11.4</jackson.version.annotations>
         <jackson.version>2.11.4</jackson.version>
         <javacsv.version>2.0</javacsv.version>
